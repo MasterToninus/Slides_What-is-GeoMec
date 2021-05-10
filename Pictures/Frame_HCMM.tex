@@ -1,0 +1,43 @@
+%+------------------------------------------------------------------------+
+%| Diagram with Overlays: HCMM diagram resemble chanicomplex homotopy
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+
+
+\documentclass[beamer]{standalone}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\begin{tikzcd}[column sep=small]
+	\bigwedge^{n+1}\mathfrak{g} \ar[r,"\partial"]\ar[d,purple,"f_{n+1}"']\only<3->{\ar[ddr,blue,"\iota_{\mathfrak{g}}^{n+1}\omega",pos=0.4]}
+	& \bigwedge^{n}\mathfrak{g} \ar[r] \ar[d,purple,"f_{n}"]
+	&[-.5em] \cdots \ar[r]
+	&[-.5em]\bigwedge^{k}\mathfrak{g} \ar[r,"\partial"]\ar[d,purple,"f_{k}"']\only<3->{\ar[ddr,blue,"\iota_{\mathfrak{g}}^{k}\omega",pos=0.4]}
+	& \bigwedge^{k-1}\mathfrak{g} \ar[r] \ar[d,purple,"f_{k-1}"]
+	&[-.5em] \cdots \ar[r]
+	&[-.5em] \bigwedge^{1}\mathfrak{g}\ar[r,"\partial"]\ar[d,purple,"f_{1}"']\only<3->{\ar[ddr,blue,"\iota_{\mathfrak{g}}^{1}\omega",pos=0.4]} 
+	& \bigwedge^{0}\mathfrak{g} = \mathbb{R} \ar[d,purple,"f_{0}"]
+	\\
+	0 \ar[d,equal]& L_{n-1}\ar[d,equal] 
+	& 
+	& L_{k-1}\ar[d,equal] & L_{k-2}\ar[d,equal] 
+	& 
+	& L_0 = \Omega_{ham}^{n-1}\ar[d,hookrightarrow] 
+	& 0\ar[d,hookrightarrow] 
+	\\[-.75em]
+	0 \ar[r,"i"']
+	& \Omega^0 \ar[r,"d"']
+	& \cdots \ar[r]
+	& \Omega^{n-k} \ar[r,"d"']
+	& \Omega^{n-k+1} 
+	& \ar[r]\cdots  \ar[r]
+	& \Omega^{n-1}  \ar[r,"d"']
+	& \Omega^{n} \\
+\end{tikzcd}
+
+\end{document}
+
+	

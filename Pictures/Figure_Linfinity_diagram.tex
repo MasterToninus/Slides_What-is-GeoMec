@@ -1,0 +1,41 @@
+%+------------------------------------------------------------------------+
+%| Picture: Lie infinity Keywords cloud
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+\documentclass[crop,tikz]{standalone}
+\usetikzlibrary{cd}
+\definecolor{lincolngreen}{rgb}{0.11, 0.35, 0.02}
+\definecolor{nred}   {RGB}{224,0,0}
+
+\begin{document}
+%
+	\begin{tikzcd}[scale=1, every node/.style={scale=0.8}]
+		\ddots & \color{lincolngreen}(L^{\otimes 3})_{k} \ar[r,lincolngreen,"\mu_1"]
+		\ar[d,lincolngreen,"\mu_2"]%\ar[d,lincolngreen,"\mu_2\circ P_{2,1}"]
+		\ar[ddl,lincolngreen,sloped,near start,"\mu_3"]
+		& \color{lincolngreen}(L^{\otimes 3})_{k-1}\ar[d,phantom,"\vdots"]\ar[ddl,lincolngreen,near start,sloped,"\mu_3"]
+		\\
+		\color{nred}(L^{\otimes 2})_{k+1} \ar[r,nred,"\mu_1",crossing over]\ar[d,nred,"\mu_2"] 
+		& \color{nred}(L^{\otimes 2})_{k} \ar[r,nred,"\mu_1",crossing over]\ar[d,nred,"\mu_2"]
+		& \color{nred}(L^{\otimes 2})_{k-1}\ar[d,nred,"\mu_2"]
+		\\
+		L_{k+1} \ar[r,"\mu_1"]
+		& L_k \ar[r,"\mu_1"]
+		& L_{k-1}
+	\end{tikzcd}
+%
+\end{document}
+
+	\begin{tikzcd}[scale=1, every node/.style={scale=0.8}]
+		\color{lincolngreen}(L^{\otimes 3})_{k+1} \ar[r,lincolngreen,"\mu_1"]\ar[d,lincolngreen,"\mu_2\circ P_{2,1}"]
+		& \color{lincolngreen}(L^{\otimes 3})_{k} \ar[r,lincolngreen,"\mu_1"]\ar[d,lincolngreen,"\mu_2\circ P_{2,1}"]\ar[ddl,lincolngreen,"\mu_3"]
+		& \color{lincolngreen}(L^{\otimes 3})_{k-1}\ar[d,lincolngreen,"\mu_2\circ P_{2,1}"]\ar[ddl,lincolngreen,"\mu_3"]
+		\\
+		\color{nred}(L^{\otimes 2})_{k+1} \ar[r,nred,"\mu_1"]\ar[d,nred,"\mu_2"] 
+		& \color{nred}(L^{\otimes 2})_{k} \ar[r,nred,"\mu_1"]\ar[d,nred,"\mu_2"]
+		& \color{nred}(L^{\otimes 2})_{k-1}\ar[d,nred,"\mu_2"]
+		\\
+		(L_{k+1} \ar[r,"\mu_1"]
+		& L_k \ar[r,"\mu_1"]
+		& L_{k-1}
+	\end{tikzcd}

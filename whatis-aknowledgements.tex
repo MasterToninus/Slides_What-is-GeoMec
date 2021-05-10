@@ -1,0 +1,158 @@
+
+
+
+
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\newif\ifHandout
+%	\Handouttrue  %uncomment for the printable version
+
+%- D0cum3nt ----------------------------------------------------------------------------------------------
+\documentclass[beamer,handout,10pt]{standalone}   
+\ifHandout
+	\setbeameroption{show notes} %print notes   
+\fi
+
+	
+%- Packages ----------------------------------------------------------------------------------------------
+\usepackage{custom-style}
+
+%--Beamer Style-----------------------------------------------------------------------------------------------
+\usetheme{toninus}
+
+
+
+
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%- D0cum3nt ----------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------------------------
+
+
+\subsection{References}
+
+%------------------------------------------------------------------------------------------------
+% https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber
+\begin{frame}[t,allowframebreaks]{Extended Bibliography}
+	%\nocite{*}
+	\bibliographystyle{alpha}
+	\bibliography{bibfile}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}[t]{Other aknowledgements}
+	\begin{itemize}
+		\item Picture - Pendulum 13
+			\url{https://andrewjobling.com.au/home-1/everything-okay-becasue-pendulum-swings/}
+		\item Picture - Pendulum Phase Space
+			\url{https://iopscience.iop.org/article/10.1088/0143-0807/33/2/231}
+				\item Picture - Continuum deformation
+			\url{https://commons.wikimedia.org/wiki/File:Displacement_of_a_continuum.svg}
+		\item Animation - Reidmester moves
+			\url{http://realworldmath.tumblr.com/post/57577812688/what-the-hell-is-knot-theory-knot-theory-is-one}
+		\item Animation - Bubble rings
+			\url{https://www.facebook.com/Nassim.Haramein.official/videos/596203997519126/}
+		\item Picture - Whithead link 
+			\url{https://en.wikipedia.org/wiki/Whitehead_link}
+		\item Picture - Gauss linking number 
+			\url{https://www.maths.ed.ac.uk/~v1ranick/papers/ricca.pdf}
+		\item Picture - Borromean Rings
+			\url{https://en.wikipedia.org/wiki/Borromean_rings}	
+	\end{itemize}
+\end{frame}
+\note[itemize]{
+	\item
+}
+%------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+\begin{frame}[t,allowframebreaks]{Pictures - Aknowledgements}
+	\begin{itemize}
+		
+		\item Solar system, Wikimedia commons,
+			\url{https://en.wikipedia.org/wiki/File:Solar_sys8.jpg}
+		\item Liebherr autocrane,
+			\url{https://www.lbf.fraunhofer.de/de/projekte-produkte/schweissen/lcf-schweissnaehte.html}
+		\item Tokamak fusiereactor, Max Planck Institute for Plasma Physics,
+			\url{https://www.cursor.tue.nl/achtergrond/2019/december/week-2/alternatieve-weg-naar-kernfusie/} 	
+	
+		\item YBC 7289 Clay tablet, 
+			\url{https://archeocomputing.wordpress.com/tag/ybc-7289/}
+		\item Hanover region map,
+			\url{http://kulturerbe.niedersachsen.de/objekt/record_kuniweb_21881/1/}
+		\item Portrait of Galileo Galilei by Justus Sustermans, Wikimedia commons,
+			\url{https://it.wikipedia.org/wiki/File:Justus_Sustermans_-_Portrait_of_Galileo_Galilei,_1636.jpg}
+		\item Vladimir Arnold portrait, Wikimedia commons,
+			\url{https://en.wikipedia.org/wiki/Vladimir_Arnold}
+		\item Jeam-Marie Souriau portrait, SMF, 
+			\url{https://smf.emath.fr/actualites-smf/deces-jean-marie-souriau}
+		\item Stephen Smale portrait, Wikimedia commons,
+			\url{https://en.wikipedia.org/wiki/Stephen_Smale}
+		\item Ralph Abraham portrait, Wikimedia commons, 
+			\url{https://en.wikipedia.org/wiki/Ralph_Abraham_(mathematician)}
+		\item Jerrold Marsden portrait, Wikimedia commons,
+			\url{https://en.wikipedia.org/wiki/Jerrold_E._Marsden}
+	
+		% CONFIGURATION SPACE		
+		\item Empty lab table, Shuttershock,
+			\url{https://www.shutterstock.com/it/image-photo/empty-wood-counter-top-on-blur-512459326}
+		\item Physical pendulum,
+			\url{https://www.optikascience.com/optikascience/product/8111-apparecchio-per-lo-studio-delle-oscillazioni-armoniche/}
+		\item Robotic arm,
+			\url{https://line.17qq.com/articles/dgijggbz.html}
+		\item Amino acids chain, NIH, 
+			\url{https://www.genome.gov/genetics-glossary/Amino-Acids}
+		\item Bipendulum schematic view, configuration space and animation, C. Lessig, A Primer on Geometric Mechanics for Scientists and Engineers, lecture one, 
+			\url{http://isgwww.cs.uni-magdeburg.de/graphics/teaching/2012/gm_primer/index.html}
+		
+		% PHASE SPACE
+		\item Pendulum phase cylinder, P.G. Camara, Topological methods for genomics: present and future directions
+			\url{https://europepmc.org/articles/PMC5624534/figure/F1/}
+		
+		% OBSERVABLEs
+		\item Angle observable:
+			\begin{itemize}
+				\item Goniometer,
+					\url{https://www.hartis.si/sl/p/7997/kotomer-180-10cm-arda-tecnoschool-404ss.html}
+				\item Magnifying glass,
+					\url{https://www.cleanpng.com/png-magnifying-glass-clip-art-2130113/preview.html}
+			\end{itemize}					
+		\item Energy observable:
+			\begin{itemize}
+				\item Pulley,
+					\url{https://technologystudent.com/gears1/pulley1.htm}
+				\item Display,
+					\url{https://www.amazon.co.uk/ZONJIE-Indicator-Backlight-Batteries-Lead-acid/dp/B08CNJCKKT}
+				%\item Motor
+			\end{itemize}
+		\item Pendulum phase portrait, Building 37, Hamilton-Jacobi (part 1),
+			\url{https://bldg37.wordpress.com/2012/11/28/hamilton-jacobi-part-1/}
+			
+		% SYMMETRIES
+		\item Solid Torus, Wikimedia commons,
+			\url{https://commons.wikimedia.org/wiki/File:Torus2.svg}
+		\item The Arnold Clown Map Movie, Evelyn Sander,
+			\url{http://math.gmu.edu/~sander/movies/arnoldclown.html}
+			
+		% TODO NEQW
+		\item Introduction to Smooth Manifolds, J. Lee,
+			\url{https://www.semanticscholar.org/paper/Introduction-to-Smooth-Manifolds-Lee/9788780417087b7766689d9d84864b7fb6290b81}			
+			
+	\end{itemize}
+\end{frame}
+\note[itemize]{
+	\item
+}
+%------------------------------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------------------------------
+\end{document}

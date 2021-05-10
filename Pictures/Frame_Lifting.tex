@@ -1,0 +1,69 @@
+%+------------------------------------------------------------------------+
+%| Diagram: HCMM as a Lift
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+
+
+\documentclass[beamer]{standalone}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usetikzlibrary{decorations.pathmorphing}
+	%Credit: https://tex.stackexchange.com/questions/99119/beamer-problematic-use-of-visible-and-only-in-combination-with-tikz-to-draw-a
+  \tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+  }
+\RequirePackage[cal=boondox,scr=boondoxo]{mathalfa}
+
+\begin{document}
+	\begin{columns}
+		\begin{column}{.325\linewidth}
+				\begin{tikzcd}[column sep = large,row sep=small]
+					& L_{\infty}(M,\omega) 
+					\ar[dd,visible on=<2>,"\mathscr{v}"]
+					\ar[d,visible on=<3->,two heads,"\pi_{Ham}"]
+					\\
+					& \only<2>{\phantom{\mathfrak{X}_{Ham}(M,\omega)}}
+					\only<3->{
+						\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=blue!5,draw=blue!30,anchor=base]            
+            			(target) {$\mathfrak{X}_{Ham}(M,\omega)$ };
+            			}	
+					} 
+					\ar[d,hook,visible on=<3->]
+					\\
+					\mathfrak{g} \ar[uur,dashed,"(f)"]\ar[r,"v"']
+					& \mathfrak{X}(M)
+				\end{tikzcd}	
+		\end{column}
+		\begin{column}{.625\linewidth}	
+			HCMM is an $L_\infty$-morphism  $~(f):\mathfrak{g}\to L_\infty(M,\omega)$
+			\\[.8em]
+			\onslide<2->{
+			 lifting the  infinitesimal action $\quad v:\mathfrak{g}\to \mathfrak{X}(M)$}
+			\\[1em]				 
+			 \onslide<3->{ 
+				\qquad\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=blue!5,draw=blue!30,text width=.9\linewidth,align=center]            
+            			(base) {
+	            			\footnotesize{
+            					\emph{(acting via Hamiltonian vector fields!)}
+            					\\
+            					$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$
+						}
+            			};
+            	}			
+			 }
+
+		\end{column}
+	\end{columns}
+	\only<3->{
+	\begin{tikzpicture}[overlay,remember picture]
+    	\path[->] (base.west) edge[bend left,blue](target.south east);
+    \end{tikzpicture}		}
+\end{document}
+

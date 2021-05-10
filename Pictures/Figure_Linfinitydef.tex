@@ -1,0 +1,66 @@
+%+------------------------------------------------------------------------+
+%| Frame: Lie infinity algebra Definition
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{arrows,shapes}
+\usepackage{amsfonts}
+
+
+\begin{document}
+	\tikzstyle{every picture}+=[remember picture]
+	\everymath{\displaystyle}
+	\tikzstyle{na} = [baseline=-.5ex]
+	\begin{minipage}[c]{\linewidth}
+		\begin{minipage}[t]{0.3\linewidth}
+			\vspace{1em}
+			\begin{displaymath}
+								 (
+								 \tikz[baseline]{
+								            \node[fill=blue!20,anchor=base] (t1)
+								            {$ L$};
+								        } 
+									,
+									 \tikz[baseline]{
+								            \node[fill=blue!20,anchor=base] (t2)
+								            {$ \lbrace \mu_i \rbrace_{i \in \mathbb{N}} $};
+									}
+								)
+				\end{displaymath}
+				%	
+		\tikz[na] \node[scale=0.5,coordinate,fill=blue!20,draw,circle] (n1) {};		    
+				 Graded vector space $$L = \bigoplus_{i\in\mathbb{Z}} L_i$$		
+		\end{minipage}
+		%
+		\begin{minipage}[t]{0.7\linewidth}
+			\tikz[na]\node [scale=0.5,coordinate,fill=blue!20,draw,circle] (n2) {};	    
+				  	Family of multilinear maps (\emph{multi-brackets}) $\mu_k : L^{\otimes k} \rightarrow L$
+				\vspace{-0.5em}
+				\begin{itemize}
+				    	\item[-] graded skew-symmetric
+				    	\item[-] $\textrm{deg}(\mu_k)= k - 2$
+				    		%\footnote{i.e.$\textrm{deg}\left(l_k(x_1,\ldots,x_k)\right)= \sum_i \textrm{deg}(x_i) +2 -k $}
+							\item[-] 	satisfying \emph{"Higher Jacobi"} relations  
+							$$\displaystyle J_m=\sum_{i+j=m+1}	\mu_i \triangleleft \mu_j = 0
+							\quad 							(\forall m\geq 1)$$		
+				\end{itemize}		
+		\end{minipage}
+
+		\footnotetext{Notation: $\qquad\mu_i\triangleleft \mu_j := \frac{(-)^{i(j+1)}}{j!(i-1)!}\mu_i\circ(\mu_j\otimes id_{i-1}) \circ \mathcal{A}~, \quad \mathcal{A} =$ (graded) total skew-symmetrizator.}
+	\end{minipage}
+
+
+
+
+% Now it's time to draw some edges between the global nodes. Note that we
+% have to apply the 'overlay' style.
+\begin{tikzpicture}[overlay]
+        \path[->] (n1) edge [bend left] (t1);
+        \path[->] (n2) edge [bend right] (t2);
+       % \path[->] (n3) edge [out=0, in=-90] (t3);
+\end{tikzpicture}
+
+\end{document}

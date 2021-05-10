@@ -1,0 +1,102 @@
+% Geometric Fields Mechanics: Multi-Symplectic approach at glance
+% Author: Antonio miti
+
+\documentclass[border=10pt, tikz]{standalone}
+\usepackage{tikz}
+\usepackage{amssymb}
+
+
+\usetikzlibrary{arrows,positioning}
+
+
+
+\newcommand{\TwistedLinear}{\circledast}
+\newcommand{\TwistedAffine}{\textrm{(aff)} \circledast}
+
+
+\begin{document}    
+
+% Drawing part, node distance is 1.5 cm and every node
+% is prefilled with white background
+\tikzset{%
+  % Specifications for style of arrows:
+   projection/.style={
+           ->,
+           shorten <=1pt,
+           shorten >=1pt,},
+   lagmap/.style={
+           -latex,
+           red},
+   hammap/.style={
+           -latex,
+           blue},
+   inclusion/.style={
+   		   left hook->,
+           shorten <=1pt,
+           shorten >=1pt,},                            
+  % Specifications for style of nodes:
+   base/.style = {rectangle, rounded corners, draw=black,
+                  minimum width=2cm, minimum height=1cm,
+                  text centered, font=\sffamily},
+   kinematics/.style = {base, fill=green!20},               
+   hamiltonian/.style = {base, fill=blue!20},
+   lagrangian/.style = {base, fill=red!20},
+   process/.style = {base, minimum width=1cm,
+                     font=\ttfamily},
+}
+\begin{tikzpicture}[node distance=2.25cm,
+    every node/.style={fill=white, font=\sffamily}, align=center]
+
+  % Specification of nodes (position, etc.)
+  \node (M_block)	[kinematics]	{M};
+  \node (volM_block)	[process, left of= M_block, xshift=-0.4cm]	{$\bigwedge^m M$};
+  \node (E_block)	[kinematics, above of= M_block]	{E};
+  \node (volE_block)	[process, right of= E_block, , xshift=0.4cm]	{$\bigwedge^m E$};
+  \node (Z_block)	[process, right of= volE_block]	{$\Lambda_2^m$};
+
+
+
+  \node (J1E_block)	[lagrangian, above left of= E_block, yshift=1.5cm, xshift=-1cm]	{$J^{1}E$};
+  \node (J2E_block)	[lagrangian, above of= J1E_block]	{$J^2E$};
+  \node (dualVE_block) [ fill=orange!15,base, left of =E_block, xshift=-2cm] {$V^\circledast E$};
+
+  \node (affdualJ1E_block)	[hamiltonian, above right of= E_block, yshift=0.5cm, xshift=1cm]	{$J^{1{\textrm{(aff)} \circledast}}E$};  
+  \node (lindualJ1E_block) [hamiltonian, above of =affdualJ1E_block] {$\vec{J}^{1\circledast}E$};  
+  \node (J1lindualJ1E_block) [hamiltonian, above of =lindualJ1E_block] {$J^1 \left( \vec{J}^{1\circledast} E \right)$}; 
+	\node(duallindualJ1E_block)[ fill=cyan!15, base, right of =lindualJ1E_block, xshift=1cm] {$V^\circledast \left( \vec{J}^{1\circledast} E \right)$}; 
+		 
+  
+  % Bundle Projections 
+	\draw[projection]	(E_block) -- (M_block);
+	\draw[projection]	(volM_block) -- (M_block);
+  
+	\draw[projection]	(volE_block) -- (E_block); 
+	\draw[projection]	(J1E_block.south east) -- (E_block); 
+	\draw[projection]	(affdualJ1E_block.south west) -- (E_block); 
+	\draw[projection]	(lindualJ1E_block.south west) -- (E_block); 
+	\draw[projection]	(dualVE_block) -- (E_block);
+   
+	\draw[inclusion]	(Z_block) -- node[above]{$i$} (volE_block);
+	\draw[projection]	(J2E_block) -- (J1E_block);
+
+	\draw[projection]	([xshift=-0.25cm] affdualJ1E_block.north) -- ([xshift=-0.25cm] lindualJ1E_block.south);
+	\draw[projection]	(J1lindualJ1E_block) -- (lindualJ1E_block);
+	\draw[projection]	(duallindualJ1E_block) -- (lindualJ1E_block);   
+ 
+  % Dynamics Map
+	\draw[lagmap]	(J1E_block) -- node {$\mathcal{L}$}	(volM_block);      
+	\draw[lagmap,bend left]	(J2E_block.west) -| node[above,anchor= east] {$D_\mathcal{L}$} 	(dualVE_block.north);   
+	\draw[lagmap]	(J1E_block.east) -- node {$\mathbb{F}\mathcal{L}$}	(affdualJ1E_block.west);   
+	\draw[hammap]	([xshift=+0.25cm] lindualJ1E_block.south) -- node {$\mathcal{H}$}	([xshift=+0.25cm] affdualJ1E_block.north);      
+	\draw[bend left,hammap]	(J1lindualJ1E_block.east) -| node[above,anchor= west] {$D_\mathcal{H}$}	(duallindualJ1E_block.north); 
+
+	\draw[<->]	(Z_block) -- node {$\Phi$}	(affdualJ1E_block); 
+	
+	% Legend
+	\node (legend) [draw,right=of M_block,align=left] { $\rightarrow \; $\small : Bundle projection \\
+																				 $\circledast \;$\small: Twisted linear dual
+    };  
+	
+
+  \end{tikzpicture}
+\end{document}

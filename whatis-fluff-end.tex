@@ -1,0 +1,199 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Brief introduction to multisymplectic geometry and Homotopy momap
+%| Author: Antonio miti
+%| Event: PHD preliminary Defence
+%+----------------------------------------------------------------------------+
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\newif\ifHandout
+
+%- D0cum3nt ----------------------------------------------------------------------------------------------
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+
+%- HandOut Flag -----------------------------------------------------------------------------------------
+\ifHandout
+	\setbeameroption{show notes} %print notes   
+\fi
+
+	
+%- Packages ----------------------------------------------------------------------------------------------
+\usepackage{custom-style}
+
+
+
+
+%--Beamer Style-----------------------------------------------------------------------------------------------
+\usetheme{toninus}
+\usetikzlibrary{positioning}
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------
+%- D0cum3nt ----------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[t]{Geometric Mechanics: Take Away Message}
+	\begin{itemize}
+		\item[•] \alert{States} are encoded by a \alert{symplectic manifold}.
+		\begin{itemize}
+			\item[-] Smooth manifolds arise naturally in the description of mechanical systems.
+			\item[-] Constraints can be enforced intrinsically
+			\item[-] Geo. Mech. yields an inherent intuition of diff. geom. structures.
+		\end{itemize}
+		\item<2->[•] \alert{Observables} quantities are encoded by \alert{smooth functions}.
+		\begin{itemize}
+			\item[-] The symplectic structure prescribe how to associate a vec. field to any observable.
+			\item[-] Time evolution is obtained by integrating the flow along an Ham. v.f.
+		\end{itemize}				
+		\item<3->[•] \alert{Continuous symmetries} are encoded by \alert{symplectic Lie group actions}.
+		\begin{itemize}
+			\item[-] A relevant class of symmetries can be reconstructed from observables quantities via \emph{comomentum maps}.
+			\item[-] Their importance lies in the existence of corresponding conserved quantities and the reduced description arising from them.
+		\end{itemize}				
+	\end{itemize}
+	%Symplectic geometry is central
+	\vfill
+	%
+	\onslide<4->{
+		\begin{disclaimerbox}[we glossed on some technical details]
+			\resizebox{.85\textwidth}{!}{
+				\begin{columns}
+					\begin{column}[T]{0.65\textwidth}
+						\begin{itemize}
+							\item[-] \color{black!80!white} Galilean / Special / General relativity (observer)
+							\item[-] Holonomics / Non-holonomics constraints
+							\item[-] Conservative / Dissipative system
+							\item[-] Discrete / \alert{Continuous} degrees of freedom.
+						\end{itemize}
+					\end{column}					
+					\begin{column}[T]{0.5\textwidth}
+						\begin{itemize}
+							\item[-] \color{black!80!white} Classical / Quantum observability
+							\item[-] Lagrangian / Hamiltonian dynamics
+							\item[-] Velocities $\neq$ Momenta
+							\item[-] Local / Global flow integrability
+						\end{itemize}
+					\end{column}							
+				\end{columns}
+			}				
+		\end{disclaimerbox}	
+	}
+
+\end{frame}
+\note[itemize]{
+	\item è centrale nel senso che è l'arena  in cui descrivere molti sistemi ideali
+	\item richiede estensioni e generalizzazioni per codificare casi di studio piu' realistici e/o generali
+
+	\item geometry is an intrisic part of mechanics. 
+	The set of configurations has a natural geometric structure, constraints are automatically satisfied by this choice.
+	\item {\bf descibing states as points of a manifold is the principal premise of geometric mechanics.}
+	\item Conf. space and Phase space are manifolds (higher dimensional generalization of surfaces)
+	\item A large class of constraints can be enforced intrinsically by the topology (shape) of the manifold.
+
+
+	\item an important trait of geometric mechanics is its intuitive nature: structures and time evolution of mechanical systems can be illustrated by visualizing configuration and phase space.
+	Practilly working in Geo. Mech. often means to exploit the inherent geometric intuition.
+	
+	\item an important characteristic is its emphasis on laying a rigourous mathematical foundation on which one can build upon mechanics. 
+	While Newtonian mechanics is highly desciptive it does not reveal the underlying structure.
+	In geo. mech. computations are structural arguments which provide insight into the frabic they represent. 
+
+	\item Huge disclaimer, in the above presentation we glossed out on many details...
+
+}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}[t,fragile]{Going higher: multisymplectic geometry}
+	\begin{block}{Historical motivation}
+		Mechanics: geometrical foundations of \textit{(first-order)} field theories.
+	\end{block}
+	\vfill	
+	\begin{table}
+		\only<2->{
+		\begin{tabular}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.35\textwidth}|} 
+            \hline
+            \parbox[][20pt][c]{0.2\textwidth}{mechanics} & \multicolumn{2}{c|}{geometry} \\
+            \hline
+            \parbox[][20pt][c]{0.2\textwidth}{phase space} & symplectic manifold & \only<3->{multisymplectic manifold} \\[.25em]
+            \parbox[][20pt][c]{0.2\textwidth}{classical \\ observables} & Poisson algebra & \only<3->{$L_\infty$-algebra} \\[.25em]
+            \parbox[][20pt][c]{0.2\textwidth}{symmetries} &  group actions admitting comoment map & 
+            \only<3->{group actions admitting 
+				\tikz[baseline,remember picture]{\node[rounded corners,
+	                        fill=orange!10,draw=orange!30,anchor=base]            
+	            			(target) {homotopy comomentum map};
+	            }
+            }
+            \\
+            \hline
+  \multicolumn{1}{c}{}
+            &  
+            \multicolumn{1}{@{}c@{}}{$\underbrace{\hspace*{.3\textwidth}}_{\text{point-like particles systems}}$} 
+            &
+            \multicolumn{1}{@{}c@{}}{\only<4->{$\underbrace{\hspace*{.3\textwidth}}_{\text{field-theoretic systems}}$}} 
+		\end{tabular}
+		}
+	\end{table}		
+	\vfill
+	\onslide<4->{
+		\begin{block}{Scope of the thesis}
+			\begin{itemize}
+				\item[$\bullet$] Develop theory of 
+					\tikz[baseline,remember picture]{\node[rounded corners,
+	                        fill=orange!10,draw=orange!30,anchor=base]            
+	            			(base) {homotopy comomentum maps};
+	            	}
+	            \item[$\bullet$] produce new meaningful examples.
+			\end{itemize}
+		\end{block}
+		%
+        \begin{tikzpicture}[overlay,remember picture]
+			\path[->]<4-> (base.east) edge[bend right](target.south east);
+		\end{tikzpicture}
+	}
+	%
+\end{frame}
+\note[itemize]{
+	\item Historically, the interest in multisymplectic manifolds, has been motivated by the need for understanding the geometrical foundations of first-order classical field theories.
+	The key point is that, just as one can associate a symplectic manifold to an ordinary classical mechanical system (e.g. a single
+point-like particle constrained to some manifold), it is possible to associate a multisymplectic
+manifold to any classical field system (e.g. a continuous medium like a filament or a fluid). See frame Extra-\ref{Frame:Ms-Field-Mechanics} 
+	
+	\item General ideas basic parallelisms with caveats
+	\item caveat: points in multiphase spaces are not states
+	\item the table hides the duality between geometric and algebraic approaches to the problem.
+	\item 
+}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------------
+\end{document}
+%----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+

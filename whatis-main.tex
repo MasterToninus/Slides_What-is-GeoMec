@@ -1,17 +1,16 @@
+
 %+----------------------------------------------------------------------------+
-%| SLIDES: template
-%| Contents:	- x minutes (extimated duration 3 minutes per slide )
+%| SLIDES: Phd colloquium
+%| Contents:	- 45 minutes (extimated duration 3 minutes per slide )
 %|
 %| Author: Antonio miti
-%| Place: 
-%| Date: 
+%| Place: Leuven, April 2021
 %+----------------------------------------------------------------------------+
 
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
-	\newif\ifHandout
-	\Handouttrue  %uncomment for the printable version
-	%Handling of flags it is not preserved when passing to standalone-subfiles!
+\newif\ifHandout
+%\Handouttrue  %uncomment for the printable version
 
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
@@ -24,15 +23,16 @@
 
 
 
-
 %- Packages ----------------------------------------------------------------------------------------------
 \usepackage{custom-style}
-
+\usepackage{array}
+\usepackage{pbox}
 
 %--Beamer Style-----------------------------------------------------------------------------------------------
 \usetheme{toninus}
-
-
+\usepackage{animate}
+\usetikzlibrary{positioning, arrows}
+\usetikzlibrary{shapes,decorations}
 \usetikzlibrary{backgrounds}
   \tikzset{
     invisible/.style={opacity=0},
@@ -45,18 +45,18 @@
 
 
 %- T1tle P4g3 -------------------------------------------------------------------------------------------
-\title{ Template \\ Title} 
-\subtitle{\href{www.google.com}{event-link}}
+\title{What is ... \\ Geometric Mechanics} 
+\subtitle{\href{ttps://set.kuleuven.be/phd/sap/dualjoint/public}{PhD Colloquim}}
 \author[AMM]{\href{https://dmf.unicatt.it/miti/}{Antonio Michele Miti}}
 \institute[UCSC and KU Leuven]{
   \begin{tabular}[h]{ccc}
       Università Cattolica del Sacro Cuore & $\qquad$ & KU Leuven \\
       Brescia, Italy & & Leuven, Belgium \\
-      \href{https://dipartimenti.unicatt.it/dmf-home?rdeLocaleAttr=it}{\includegraphics[width=3.5cm]{Logos/UnicattBS-logo}} & & 
-      \href{https://wis.kuleuven.be/english}{\includegraphics[width=4cm]{Logos/KULeuven_logo}}
+      \href{https://dipartimenti.unicatt.it/dmf-home?rdeLocaleAttr=it}{\includegraphics[width=3.5cm]{./Logos/UnicattBS-logo}} & & 
+      \href{https://wis.kuleuven.be/english}{\includegraphics[width=4cm]{./Logos/KULeuven_logo}}
   \end{tabular}      
 }
-\date[Template_21] % (optional, should be abbreviation of conference name)
+\date[PublicDefence_21] % (optional, should be abbreviation of conference name)
 {	
 	\href{https://scuoledidottorato.unicatt.it/phdschools/science-home}{International Doctoral Programme in Science } \\
 	{\vskip 1ex}
@@ -71,24 +71,21 @@
 	\ifHandout
 
 	\else
-		\addtocounter{framenumber}{-1}
-		\begin{frame}{}
-		\label{frame:thankyouslide}
-			\vfill
-		  \centering 
-		  {\Huge\color{red} 
-		  \emph{Thank you for your attention!}}
-			\vfill
-			%
-			\centering
-			\fbox{
-				Picture or Take-away message.
-				% 		\includegraphics[width=.4\textwidth]{Pictures/thesis-cover}
-			}
-		\end{frame}
-		\note[itemize]{
-			\item
-		}
+	\addtocounter{framenumber}{-1}
+	\begin{frame}{}
+	\label{frame:thankyouslide}
+		\vfill
+	  \centering 
+	  {\Huge\color{red} 
+	  \emph{Thank you for your attention!}}
+		\vfill
+		%
+		\centering
+		\fbox{\includegraphics[width=.4\textwidth]{Pictures/thesis-cover}}
+	\end{frame}
+	\note[itemize]{
+		\item
+	}
 	\fi
 }
 
@@ -119,11 +116,17 @@
 	\end{frame}
 	\addtocounter{framenumber}{-1}
 \note{
+	%Abstract?
 	%\textbf{\underline{OUTLINE}}:
 	%\tableofcontents
 	\textbf{Abstract:}
 	\\
-    ...
+    Geometric mechanics is a branch of mathematics applying differential geometry methods to many areas of mechanics, from the dynamics of point-particles to continuous media.
+	\\
+    In this talk, we review the three cornerstones of this discipline - phase space, observables and symmetries- focussing on the centrality of the notion of symplectic forms. If time permits we will also discuss a possible generalization of the latter notion, named multisymplectic structure, that can be useful to encode mechanical systems with infinite degrees of freedom in a finite-dimensional setting.
+	\\
+    The crucial message is that, just as geometry provide an intuition of how mechanical systems evolve, mechanics provides a context for interpreting many abstract differential geometry objects.	
+	
 }
 %---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -134,27 +137,58 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Introduction}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	\input{template-intro}
-
+	\input{whatis-intro}
 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\section{Sec 1}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\section{Phase Space}
 \checkpoint	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Space of Configurations}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+	\input{whatis-configspace}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Space of States}
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+	\input{whatis-phasespace}
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-\subsection{SubSec a}
+\section{Observables and time evolution}
+\checkpoint	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
-	%\input{template-subsec-a}
+\subsection{Measurable quantities}
+\subsection{Hamiltonian evolutions}
+	\input{whatis-observables}
+
 %-------------------------------------------------------------------------------------------------------------------------------------------------
+\section{Symmetries}
+\checkpoint	
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Hamiltonian action}
+%\subsection{reduction}
+	\input{whatis-symmetries}
 
 
+
 %-------------------------------------------------------------------------------------------------------------------------------------------------
+\section{Going Higher}
+\checkpoint	
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+	\input{whatis-fluff-end}
+
+
+
 	\thankyouslide
+
 %------------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------------------
+
 
 
 
@@ -164,8 +198,9 @@
 \appendix
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Complementary Material}
-	\input{template-complementary-material}
-	\input{template-aknowledgements}
+	\input{whatis-complementary-material}
+	\input{whatis-multisym}
+	\input{whatis-aknowledgements}
 %------------------------------------------------------------------------------------------------
 
 
