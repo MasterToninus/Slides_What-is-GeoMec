@@ -1,4 +1,4 @@
 # PHD Colloquium
 KU Leuven
 
- - Todo -
+https://www.researchgate.net/publication/351492814_What_is_Geometric_Mechanics?_sg=-6EwxmI37xkl3wngJyeIEJA3wJblYM5V9ofx6vA7dG8Oep_9hzPFgNxy2PiWkw6LBMpNs_yB86MOwU3yAuPE9v2svIDKYIedDO5ox2Ek.sNPe8gbjjOtmS5SP7vTDsL3UPH9zq1fO00i0ynxrMp2o6x15tKzxXXYyxTjfPLg0RyVADxcgAysXNqiyAV0UBQ
