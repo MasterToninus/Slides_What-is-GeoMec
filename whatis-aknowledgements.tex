@@ -1,14 +1,21 @@
-
-
-
-
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Aknowledgements
+%| Author: Antonio miti
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
+%+----------------------------------------------------------------------------+
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
-%	\Handouttrue  %uncomment for the printable version
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
-\documentclass[beamer,handout,10pt]{standalone}   
+\documentclass[beamer,10pt]{standalone}   
+%\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
+
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi

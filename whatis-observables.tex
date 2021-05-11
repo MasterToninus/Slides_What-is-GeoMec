@@ -1,11 +1,21 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Observables - Hamiltonians - Symplectic structure
+%| Author: Antonio miti
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
+%+----------------------------------------------------------------------------+
+
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -55,9 +65,14 @@
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\begin{center}
-				\includegraphics<1>[width=.9\textwidth]{Pictures/pendo60-nogonio}
-				\includegraphics<2>[width=.9\textwidth]{Pictures/pendo60}
-				\includegraphics<3>[width=.9\textwidth]{Pictures/observo}
+				\ifHandout 
+					\includegraphics<3>[width=.7\textwidth]{Pictures/observo}				
+				\else
+					\includegraphics<1>[width=.9\textwidth]{Pictures/pendo60-nogonio}
+					\includegraphics<2>[width=.9\textwidth]{Pictures/pendo60}
+					\includegraphics<3>[width=.9\textwidth]{Pictures/observo}
+				\fi
+				
 				\only<3>{
 					\tikz[overlay,remember picture]
 					{
@@ -175,7 +190,15 @@
 \end{frame}
 \note[itemize]{
 	\item canonical i.e independent from arbitrary choices.
-	\item the symplectic structure prescribes a tangent vector field to any observable quantity
+	\item the symplectic structure prescribes a tangent vector field to any observable quantity.
+	\item integrate the flow implies to solve an ODE (a PDE if $M$ is $\infty$-dimensional).
+		\begin{equation}
+			\dot{q} = \dfrac{\partial H}{\partial p}
+			~,\qquad 
+			\dot{p} = - \dfrac{\partial H}{\partial q}
+			\tag{Hamilton equations}	
+		\end{equation}
+	 \item Computing these solutions is where the analytical side of mechanics kicks in.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -369,7 +392,7 @@ Formal Definition&
     \end{column}
     \begin{column}{.65\textwidth}	
 		\begin{itemize}
-			\item The corresponding hamiltonian vector field $X_{p}= a ~\partial_\theta + b ~\partial_p$ satisfies
+			\item The corresponding Ham. vector field $X_{p}= a ~\partial_\theta + b ~\partial_p$ satisfies
 				\vspace{-1em}
 				$$ d p = \iota_{X_p} \omega = a ~d p - b ~d \theta$$
 			\item Flow of $X_p = \partial \theta$ are free rotations around the pivot
@@ -393,7 +416,7 @@ Formal Definition&
 				\vspace{-1em}			
 				$$ H = \dfrac{p^2}{2 m \ell^2} + m	g \ell ( 1- \cos(\theta))$$
 			\item 
-				The corresponding Ham. V.f. results
+				The corresponding Ham. v. f. results
 				\vspace{-1em}				
 				$$ X_H = - m g \ell \sin(\theta) \partial_p + \dfrac{p}{m \ell^2} \partial_\theta$$		
 		\end{itemize}
@@ -404,7 +427,7 @@ Formal Definition&
 
 \end{frame}
 \note[itemize]{
-	\item 			(nuvoletta: angular momentum $ p = m \ell \dot{\theta}$)
+	\item 	Recall: angular momentum $ p = m \ell \dot{\theta}$.
 	\item Computing the flow of the Ham v.f. is where the analisys (exact solutions) or the numerics (approximate solutions) kicks in.
 	\item why one should introduce all this machinery instead of going straight to the solution of the differential equations of motions?
 		\begin{itemize}

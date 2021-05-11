@@ -1,11 +1,21 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Configuration Space
+%| Author: Antonio miti
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
+%+----------------------------------------------------------------------------+
+
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -46,7 +56,12 @@
 	}
 \end{frame}
 \note[itemize]{
-	\item In molte presentazioni di nozioni matematiche per concetto primitivo o nozione primitiva si intende un concetto che, per la propria semplicità ed intuitività, si rinuncia a definire mediante termini e concetti già definiti all'interno di un sistema formale, e che al contrario si sceglie di sfruttare per formulare la definizione di altri concetti; pertanto un concetto primitivo si accetta senza spiegazioni perché il suo significato è ovvio.
+\item an elementary way for introducing the notion of phase space starts from the concept of \emph{configuration space}.
+\item this is in turn based on three first principles: Space, Body, Displacement.
+\item they cannot be defined in a strict sense but one can provide intuition and a mathematical realization.
+
+\item
+In many presentations of mathematical notions by primitive concept or primitive notion is meant a concept which, due to its simplicity and intuitiveness, one renounces to define by means of terms and concepts already defined within a formal system, and which on the contrary is chosen to exploit to formulate the definition of other concepts; therefore a primitive concept is accepted without explanation because its meaning is obvious or self-evident.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -156,14 +171,16 @@
 		\end{column}
 		\begin{column}[T]{0.5\textwidth}
 				\begin{center}
-					\includegraphics<1>[width=\textwidth]{Pictures/emptylab}
+					\ifHandout \else
+						\includegraphics<1>[width=\textwidth]{Pictures/emptylab}
+					\fi
 					\includegraphics<2->[width=\textwidth]{Pictures/Pendolab}					
 				\end{center}
 		\end{column}
 	\end{columns}
 \end{frame}
 \note[itemize]{
-	\item "è il protagonista della recita"
+	\item "The body is the protagonist of the act" (Ambient is the stage)
 	\item remind the implied idea: 	The ambient acts on the body via \emph{forces} and \emph{constraints}.
 }	
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -202,7 +219,9 @@
 		\end{column}
 		\begin{column}[T]{0.5\textwidth}
 			\begin{center}
-				\includegraphics<1>[width=\textwidth]{Pictures/Pendolab}
+				\ifHandout \else
+					\includegraphics<1>[width=\textwidth]{Pictures/Pendolab}
+				\fi				
 				\only<2->{	
 					\animategraphics[autoplay,palindrome,width=\textwidth]{5}{Pictures/pendolum-frame/pendo}{1}{9}
 				}
@@ -298,7 +317,9 @@
 	\end{columns}
 \end{frame}
 \note[itemize]{
-	\item
+	\item Neglect the fluff in the wording of Galilei:
+		\\
+    Adunque, tuttalvolta che in concreto voi applicate una sfera materiale a un piano materiale, voi applicate una sfera non perfetta a un piano non perfetto; e questi dite che non si toccano in un punto. Ma io vi dico che anco in astratto una sfera immateriale, che non sia sfera perfetta, può toccare un piano immateriale, che non sia piano perfetto, non in un punto, ma con parte della sua superficie; talché sin qui quello che accade in concreto, accade nell'istesso modo in astratto: e sarebbe ben nuova cosa che i computi e le ragioni fatte in numeri astratti, non rispondessero poi alle monete d'oro e d'argento e alle mercanzie in concreto. Ma sapete, signor Simplicio, quel che accade? Sì come a voler che i calcoli tornino sopra i zuccheri, le sete e le lane, bisogna che il computista faccia le sue tare di casse, invoglie ed altre bagaglie, così, quando il filosofo geometra vuol riconoscere in concreto gli effetti dimostrati in astratto, bisogna che difalchi gli impedimenti della materia; che se ciò saprà fare io vi assicuro che le cose si riscontreranno non meno aggiustatamente che i computi aritmetica Gli errori dunque non consistono né nell'astratto né nel concreto, né nella geometria o nella fisica, ma nel calcolatore, che non sa fare i conti giusti. (G. Galilei, Dialogo sopra i due massimi sistemi, tolemaico e copernicano, a cura di Libero Sosio, Einaudi, Torino, p. 252).
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -369,12 +390,64 @@
 
 \end{frame}
 \note[itemize]{
-	\item
+	\item The sphere centered in the origin of the Cartesian space is a prototypical example.
+	\item Intrinsically, smoothness is encoded requiring the property that transition functions on overlapping charts are smooth.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------
+\ifHandout
+\begin{frame}[t]{Configuration Space: a slightly more difficult example}
+
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\center
+				\begin{bracketbox}
+					Double pendulum.
+				\end{bracketbox}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\noindent Toy model for:
+				\begin{columns}
+					\begin{column}{0.5\textwidth}
+						\begin{center}
+							\includegraphics[width=.55\textwidth]{Pictures/robo_arm}	
+						\end{center}
+						mechanical arms.
+					\end{column}			
+					\begin{column}{0.5\textwidth}
+						\begin{center}
+							\includegraphics[width=.65\textwidth]{Pictures/amino_acids}
+						\end{center}
+						Proteins (amino acid chains).
+					\end{column}				
+				\end{columns}
+			\end{column}				
+		\end{columns}
+
+
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\begin{center}
+					\includegraphics[width=.75\textwidth]{Pictures/bipend-abstract}	
+				\end{center}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{center}
+					\includegraphics[width=.75\textwidth]{Pictures/bipend-phase}	
+					\alert{Configuration space is a Torus}
+				\end{center}
+			\end{column}
+		\end{columns}	
+	
+\end{frame}
+\note[itemize]{
+	\item \animategraphics[autoplay,palindrome,width=\textwidth]{5}{Pictures/lessig-pibend-frame/bipend-}{2}{6}
+	\item This case (bi-pendulum) exemplify how constraints can be enforced intrinsically choosing an appropriate geometric framework. (2-coordinates instead of the 4 x-y coordinates needed to fix the two endpoints.
+		\item Although it is a toy model it is the first step in modelling a protein. (Chain of amino acids placed at almost constant distance between them)
+}
+\else
 \begin{frame}[t]{Configuration Space: a slightly more difficult example}
 		\center
 	\begin{bracketbox}
@@ -422,11 +495,7 @@
 
 
 \end{frame}
-\note[itemize]{
-	\item per quanto sia un toy model è il primo passo per modellizzare una proteina. (Catena di amminoacidi posti a distanza pressochè costante fra di loro)
-	\item This case (bi-pendulum) examplify how constraints can be enforced intrinsically choosing an appropriate geometric framework. (2-coordinates instead of the 4 x-y coordinates needed to fix the two endopoints.
-
-}
+\fi
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}

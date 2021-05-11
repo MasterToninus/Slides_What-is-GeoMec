@@ -1,0 +1,59 @@
+%+------------------------------------------------------------------------+
+%| Diagram: HCMM as a Lift
+%| Author: Antonio miti
+%+------------------------------------------------------------------------+
+
+
+\documentclass[beamer]{standalone}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usetikzlibrary{decorations.pathmorphing}
+	%Credit: https://tex.stackexchange.com/questions/99119/beamer-problematic-use-of-visible-and-only-in-combination-with-tikz-to-draw-a
+
+
+\RequirePackage[cal=boondox,scr=boondoxo]{mathalfa}
+
+\begin{document}
+	\begin{columns}
+		\begin{column}{.325\linewidth}
+				\begin{tikzcd}[column sep = large,row sep=small]
+					& L_{\infty}(M,\omega) 
+					\ar[d,two heads,"\pi_{Ham}"]
+					\\
+					& 
+					{
+						\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=orange!10,draw=orange!30,anchor=base]            
+            			(target) {$\mathfrak{X}_{Ham}(M,\omega)$ };
+            			}	
+					} 
+					\ar[d,hook]
+					\\
+					\mathfrak{g} \ar[uur,dashed,"(f)"]\ar[r,"v"']
+					& \mathfrak{X}(M)
+				\end{tikzcd}	
+		\end{column}
+		\begin{column}{.625\linewidth}	
+			HCMM is an $L_\infty$-morphism  $\quad(f):\mathfrak{g}\to L_\infty(M,\omega)$
+			\\[1em]
+			{
+			 lifting the  infinitesimal action $\quad v:\mathfrak{g}\to \mathfrak{X}(M)$}
+			\\[2em]				 
+			 { 
+				\qquad\tikz[baseline,remember picture]{\node[rounded corners,
+                        fill=orange!10,draw=orange!30,text width=.9\linewidth,align=center]            
+            			(base) {\emph{(acting via Hamiltonian vector fields!)}
+            			\\
+            			$ d~f_1(x) = -\iota_{v_x} \omega \qquad \forall x \in \mathfrak{g}~.$
+            			};
+            	}			
+			 }
+
+		\end{column}
+	\end{columns}
+	{
+	\begin{tikzpicture}[overlay,remember picture]
+    	\path[->] (base.west) edge[bend left,red](target.south east);
+    \end{tikzpicture}		}
+\end{document}

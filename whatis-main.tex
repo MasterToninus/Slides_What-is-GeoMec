@@ -1,4 +1,3 @@
-
 %+----------------------------------------------------------------------------+
 %| SLIDES: Phd colloquium
 %| Contents:	- 45 minutes (extimated duration 3 minutes per slide )
@@ -10,7 +9,7 @@
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
 \newif\ifHandout
-%\Handouttrue  %uncomment for the printable version
+\Handouttrue  %uncomment for the printable version
 
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
@@ -68,9 +67,7 @@
 
 
 \newcommand{\thankyouslide}[0]{
-	\ifHandout
-
-	\else
+%	\ifHandout 	\else
 	\addtocounter{framenumber}{-1}
 	\begin{frame}{}
 	\label{frame:thankyouslide}
@@ -86,8 +83,9 @@
 	\note[itemize]{
 		\item
 	}
-	\fi
+%	\fi
 }
+
 
 
 

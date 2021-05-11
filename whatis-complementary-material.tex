@@ -4,15 +4,17 @@
 %| Author: Antonio miti
 %| Event: PHD preliminary Defence
 %+----------------------------------------------------------------------------+
-
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -173,7 +175,6 @@
 \end{frame}
 \note[itemize]{
 	\item
-    Adunque, tuttalvolta che in concreto voi applicate una sfera materiale a un piano materiale, voi applicate una sfera non perfetta a un piano non perfetto; e questi dite che non si toccano in un punto. Ma io vi dico che anco in astratto una sfera immateriale, che non sia sfera perfetta, può toccare un piano immateriale, che non sia piano perfetto, non in un punto, ma con parte della sua superficie; talché sin qui quello che accade in concreto, accade nell'istesso modo in astratto: e sarebbe ben nuova cosa che i computi e le ragioni fatte in numeri astratti, non rispondessero poi alle monete d'oro e d'argento e alle mercanzie in concreto. Ma sapete, signor Simplicio, quel che accade? Sì come a voler che i calcoli tornino sopra i zuccheri, le sete e le lane, bisogna che il computista faccia le sue tare di casse, invoglie ed altre bagaglie, così, quando il filosofo geometra vuol riconoscere in concreto gli effetti dimostrati in astratto, bisogna che difalchi gli impedimenti della materia; che se ciò saprà fare io vi assicuro che le cose si riscontreranno non meno aggiustatamente che i computi aritmetica Gli errori dunque non consistono né nell'astratto né nel concreto, né nella geometria o nella fisica, ma nel calcolatore, che non sa fare i conti giusti. (G. Galilei, Dialogo sopra i due massimi sistemi, tolemaico e copernicano, a cura di Libero Sosio, Einaudi, Torino, p. 252).
 
 }
 %----------------------------------------------------------------------------------------------------------------------------------

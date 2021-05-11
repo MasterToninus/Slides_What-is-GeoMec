@@ -1,11 +1,21 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Phase Space
+%| Author: Antonio miti
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
+%+----------------------------------------------------------------------------+
+
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -91,8 +101,10 @@
 
 	\begin{columns}
 			\begin{column}{.6\linewidth}
-				\only<1>{\includegraphics[width=\textwidth]{Pictures/Vector1} }
-				\only<2>{\includegraphics[width=\textwidth]{Pictures/Vector2} }
+				\ifHandout \else
+					\only<1>{\includegraphics[width=\textwidth]{Pictures/Vector1} }
+					\only<2>{\includegraphics[width=\textwidth]{Pictures/Vector2} }
+				\fi
 				\only<3->{\includegraphics[width=\textwidth]{Pictures/Vector3} }
 			\end{column}
 			\begin{column}{.4\linewidth}
@@ -120,7 +132,10 @@
 		}
 \end{frame}
 \note[itemize]{
-	\item
+\item the smooth structure permits to define smooth parametrized curves.
+\item Curves can be naturally interpreted as trajectories.
+\item One can compute velocity in a point in the standard way employing local charts.
+\item given two curves, having the same local velocity does not depend on the choice of a chart.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -153,7 +168,7 @@
 \end{columns}
 \end{frame}
 \note[itemize]{
-	\item
+	\item Observe that here we are taking advantage of being $S^1$ an embedded submanifold. (Extrinsic approach).
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -164,47 +179,37 @@
 \begin{columns}[T]
 	\begin{column}{0.5\textwidth}
 		\begin{center}
-			\only<1>{
-			\resizebox{\textwidth}{!}{
-				\begin{tikzpicture}
-					\node[draw=none] (o) at (0, 0) {o};
-				    %frame
-				    \draw[draw=none] (-6,-8) rectangle (6,6);						
-					\foreach \x in {0,30,...,360}{
-						\draw[draw=none](0,0)--(\x:4)node[circle, fill, minimum size=5pt,
-					              inner sep=0pt, outer sep=0pt](p){};
-					\draw[green,line width=1mm] ($ (p)!3.5cm!90:(o) $) -- ($ (p)!3.5cm!270:(o) $);
-					\draw[green,dashed,line width=1mm] ($ (p)!4.5cm!90:(o) $) -- ($ (p)!4.5cm!270:(o) $);
-					}
-						\draw[blue,line width=1mm] (0,0) circle (4);
-				\end{tikzpicture}
-			}}
-			%
-			\only<2->{
-			\resizebox{.7\textwidth}{!}{
-				\begin{tikzpicture}
-					\draw[green,dashed,fill=green!20] (0,0) ellipse (1.25 and 0.5);
-					\draw [blue](-1.25,-1.75) arc (180:360:1.25 and 0.5);
-					%\draw [blue,dashed] (-1.25,-3.5) arc (180:360:1.25 and -0.5);
-					\draw[green,dashed,fill=green!20] (0,-3.5) ellipse (1.25 and 0.5);
-					\draw [blue,dashed] (-1.25,-1.75) arc (180:360:1.25 and -0.5);
-					\draw [green](-1.25,0) -- (-1.25,-3.5);
-					\draw [green](1.25,-3.5) -- (1.25,0);  
-					\fill [green!80,opacity=0.5] (-1.25,0) -- (-1.25,-3.5) arc (180:360:1.25 and 0.5) -- (1.25,0) arc (0:180:1.25 and -0.5);
-				\end{tikzpicture}		
-%				\begin{tikzpicture}
-%				  \node[cylinder,draw=black,thick,aspect=0.7,minimum height=4cm,minimum width=2.5cm,shape border rotate=90,cylinder uses custom fill, cylinder body fill=green!30,cylinder end fill=green!10] (A) {\phantom{A}};
-%				  \draw[dashed]
-%				    let \p1 = ($ (A.after bottom) - (A.before bottom) $),
-%				        \n1 = {0.5*veclen(\x1,\y1)-\pgflinewidth},
-%				        \p2 = ($ (A.bottom) - (A.after bottom)!.5!(A.before bottom) $),
-%				        \n2 = {veclen(\x2,\y2)-\pgflinewidth}
-%				  in
-%				    ([xshift=-\pgflinewidth] A.before bottom) arc [start angle=0, end angle=180,
-%				    x radius=\n1, y radius=\n2];
-%				\end{tikzpicture}	
-}
-			}
+			\ifHandout
+				\resizebox{.65\textwidth}{!}{
+					\begin{tikzpicture}
+						\node[draw=none] (o) at (0, 0) {o};
+					    %frame
+					    \draw[draw=none] (-6,-8) rectangle (6,6);						
+						\foreach \x in {0,30,...,360}{
+							\draw[draw=none](0,0)--(\x:4)node[circle, fill, minimum size=5pt,
+						              inner sep=0pt, outer sep=0pt](p){};
+						\draw[green,line width=1mm] ($ (p)!3.5cm!90:(o) $) -- ($ (p)!3.5cm!270:(o) $);
+						\draw[green,dashed,line width=1mm] ($ (p)!4.5cm!90:(o) $) -- ($ (p)!4.5cm!270:(o) $);
+						}
+							\draw[blue,line width=1mm] (0,0) circle (4);
+					\end{tikzpicture}
+				}
+				%
+				\resizebox{.35\textwidth}{!}{
+					\begin{tikzpicture}
+						\draw[green,dashed,fill=green!20] (0,0) ellipse (1.25 and 0.5);
+						\draw [blue](-1.25,-1.75) arc (180:360:1.25 and 0.5);
+						%\draw [blue,dashed] (-1.25,-3.5) arc (180:360:1.25 and -0.5);
+						\draw[green,dashed,fill=green!20] (0,-3.5) ellipse (1.25 and 0.5);
+						\draw [blue,dashed] (-1.25,-1.75) arc (180:360:1.25 and -0.5);
+						\draw [green](-1.25,0) -- (-1.25,-3.5);
+						\draw [green](1.25,-3.5) -- (1.25,0);  
+						\fill [green!80,opacity=0.5] (-1.25,0) -- (-1.25,-3.5) arc (180:360:1.25 and 0.5) -- (1.25,0) arc (0:180:1.25 and -0.5);
+					\end{tikzpicture}				
+				}
+			\else
+				\includestandalone[]{Pictures/Frame_CircleTangetBundle}
+			\fi
 		\end{center}
 	\end{column}
 	\begin{column}{0.5\textwidth}
@@ -274,8 +279,9 @@
 \end{frame}
 \note[itemize]{
 	\item You get an infinite cylinder (in the case of bipendulum I cannot picture it because we go directly into more than 2 dimensions.
-	\item ho disegnato due traiettori sul fase space per mostrare come due natural motions si possono rappresentare bene qui sopra.
-	\item per capire il significato di dell'aggettivo simplettico dobbiamo introdurre qualche altro interprete.
+	\item 
+Two trajectories are drawn on the space phase to show how two natural motions can be well represented on the global manifold (rather then on a local "phase portrait").
+	\item To understand the meaning of the adjective "symplectic" it is necessary to introduce some other notion first.
 
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------

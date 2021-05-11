@@ -1,11 +1,21 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Introduction  -> Geo Mec Point of View
+%| Author: Antonio miti
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
+%+----------------------------------------------------------------------------+
+
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -76,16 +86,42 @@
 		}
 	\end{column}
 	\end{columns}
-
-
-
 \end{frame}
 \note[itemize]{
-	\item
+\item Given the scope of these PhD Colloquia, we preferred to focus on motivation rather than details.
+\item This talk is meant as a sort of complement of my research( \cite[]) which has been purely mathematical.
+
+\item Geometric mechanics, although is not strictly necessary for introducing symplectic geometry (and its multisymplectic generalization), provide an interesting angle to approach these topics.
+\item the first reason is historical. One must acknowledge that the inception and initial developments of the abstract notions in Symplectic/Poisson/Multisymplectic geometry has been heavily motivated and inspired by physics -especially mechanics-.
+\item Secondarily,  there is a mutual benefit from the point of view of intuition. Just as mechanics suggests an interpretation of geometric structures, the converse is also true.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
-\outline
+%\outline
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\ifHandout
+ 	\begin{frame}{Table of Contents}
+  		%\tableofcontents[currentsection,currentsubsection]
+  		\tableofcontents
+	\end{frame}
+	\note[itemize]{
+		\item In the first section, we try to convey the rough idea of how geometry interacts with mechanics.
+
+		\item In the following three sections we discuss the three cornerstones of geometric mechanics: Phase Space, Observables, Symmetries.
+		
+		\item In the last part, we wrap up the discussion leading to the idea of introducing the multisymplectic formalism to treat field-like systems.
+	}	
+\else
+\addtocounter{framenumber}{-1}
+ 	\begin{frame}{Outline}
+  		%\tableofcontents[currentsection,currentsubsection]
+  		\tableofcontents
+	\end{frame}
+	\note{}	
+\fi
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 \subsection{Geometry \& Physics}
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -127,7 +163,10 @@
 	\end{columns}
 \end{frame}
 \note[itemize]{
-	\item
+\item Fix the terminology.  Recall what we mean by mechanics.
+\item Mechanics can be roughly separated into two components.
+Kinematics mostly deal with Geometric methods.
+Dynamics mostly involves Analytic methods.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -173,11 +212,14 @@
 	\end{alertblock}
 \end{frame}
 \note[itemize]{
-	\item Three fundamentals concepts: Space, Body (system), Displacement.
-	\item Nevertheless, the problem of measuring "Earth" is one of the oldest problem in mathematics (see \url{https://en.wikipedia.org/wiki/YBC_7289})
-	\item YBC 7289 is a Babylonian clay tablet notable for containing an accurate sexagesimal approximation to the square root of 2, the length of the diagonal of a unit square. 
-	\item Nel 1818 fu chiesto a Gauss di compiere la rilevazione geodetica del Regno di Hannover, associandola ai precedenti rilevamenti effettuati in Danimarca.
-La cartografia dell'Hannover portò Gauss a sviluppare la geometria differenziale insieme alle potenzialità della geometria non euclidea.
+	\item So, mechanics is a branch of physics. How does geometry gets into physics?
+	\item The trivial answer is in describing the physical space. (Less trivial: the spacetime).
+	\item The problem of measuring "Earth" is one of the oldest problem in mathematics .
+	(see \href{https://en.wikipedia.org/wiki/YBC_7289}{YBC 7289}, a Babylonian clay tablet notable for containing an accurate sexagesimal approximation to the square root of 2, the length of the diagonal of a unit square.) 
+	\item Also differential geometry stemmed from geodesy. Namely, a cartographic survey of Hannover performed by Gauss in 1818 led him to develop differential geometry and the potentiality of non-euclidean geometry.
+
+	
+	\item Beside this, geometry intersect directly with mechanics.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -195,15 +237,7 @@ La cartografia dell'Hannover portò Gauss a sviluppare la geometria differenzial
 			\includegraphics[width=0.8\textwidth]{Pictures/FFat/Galileo} 
 		\end{column}
 		\begin{column}{.6\textwidth}
-			\only<2>{
-			\begin{quotation}
-			{\footnotesize 
-				«La filosofia è scritta in questo grandissimo libro che continuamente ci sta aperto innanzi a gli occhi (io dico {\bf l'universo}), ma non si può intendere se prima non s'impara a intender la lingua, e conoscer i caratteri, ne' quali è scritto. 
-				Egli {\bf è scritto in lingua matematica, e i caratteri son triangoli, cerchi, ed altre figure geometriche}, senza i quali mezzi è impossibile a intenderne umanamente parola; senza questi è un aggirarsi vanamente per un oscuro laberinto.»
-			}
-			\end{quotation}
-			}
-			\only<3->{		
+			\only<2->{		
 			\begin{quotation}
 			{\footnotesize 
 				«Philosophy {\bf [nature]} is written in that great book which ever is before our eyes -- I mean the universe -- but we cannot understand it if we do not first learn the language and grasp the symbols in which it is written. 
@@ -216,7 +250,14 @@ La cartografia dell'Hannover portò Gauss a sviluppare la geometria differenzial
 	\end{columns}	
 \end{frame}
 \note[itemize]{
-	\item Praticamente l'idea è vecchia quanto la scienza.f
+	\item Basically the idea of the centrality of geometry in mechanics is old as the science itself...
+			\begin{quotation}
+			{\footnotesize 
+				«La filosofia è scritta in questo grandissimo libro che continuamente ci sta aperto innanzi a gli occhi (io dico {\bf l'universo}), ma non si può intendere se prima non s'impara a intender la lingua, e conoscer i caratteri, ne' quali è scritto. 
+				Egli {\bf è scritto in lingua matematica, e i caratteri son triangoli, cerchi, ed altre figure geometriche}, senza i quali mezzi è impossibile a intenderne umanamente parola; senza questi è un aggirarsi vanamente per un oscuro laberinto.»
+			}
+			\end{quotation}
+	\item For this reason, in order to avoid misunderstandings, it is necessary to clarify what we mean here as "Geometric mechancis".
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -275,8 +316,8 @@ La cartografia dell'Hannover portò Gauss a sviluppare la geometria differenzial
 	\item Smale's paper on Topology and Mechanics investigates the conserved quantities arising from Noether's theorem when a Lie group of symmetries acts on a mechanical system, and defines what is now called the momentum map (which Smale calls angular momentum), and he raises questions about the topology of the energy-momentum level surfaces and the effect on the dynamics. 
 	\item Souriau also considered the conserved quantities arising from the action of a group of symmetries, but he concentrates more on the geometric structures involved (for example the equivariance properties of this momentum for a wide class of symmetries), and less on questions of dynamics.
 	\item These ideas leads to the seminal book: \emph{Foundations of Mechanics} by Abraham and Marsden (1978).
-	\item 		{physical è un po' restrittivo, diciamo sistemi che evolvono?}	
-		{dynamical systems: non solo meccanica classica non relativistica non quantistica!}
+	\item 	We mentioned \emph{"dynamical systems"} because "physical systems" would be a little too restrictive concerning the scope of what we mean by Geometric mechanics. The latter is a framework that allows accommodating any dynamical system (in the sense of a system that evolves with respect to a "time"-parameter).
+	
 
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -339,9 +380,7 @@ La cartografia dell'Hannover portò Gauss a sviluppare la geometria differenzial
 		%http://www10.mathematik.uni-wuerzburg.de/index.php?path=research/maphy
 	\end{frame}
 	\note[itemize]{
-		\item the geometric language permits to formalize the evolution of system composed of both quantum and classical degree of freedom (mesoscopic scale)
-		\item Lessig: 
-		In our discussion we only considered classical mechanical systems. However,
+		\item In the following exposition we will  only considered classical mechanical systems. However,
 the theory applies to a diverse array of fields and disciplines ranging from quantum mechanics at the smallest scales to relativistic astrophysics at the largest, and applications can be found in areas such as image processing, space mission design, marine animal propulsion, mathematical finance, rising eggs, oceanography, plasma physics, falling cat phenomena, and many more. In its contemporary formulation using the rich toolbox of modern geometry, geometric mechanics provides thereby a surprisingly unified perspective on all these systems.
 		\item Manifolds arise naturally in the description of classical mechanical systems.
 		\item Geometrization of mechanics yields an inherent intuition to differential geometry structures (manifolds, charts, vectors ...).

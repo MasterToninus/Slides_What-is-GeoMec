@@ -80,21 +80,21 @@
 \setcounter{tocdepth}{2}
 %Intermediate checkpoint slide
 \newcommand{\checkpoint}[0]{
-	\ifHandout
+%	\ifHandout
 
-	\else
+%	\else
 	\addtocounter{framenumber}{-1}
  	\begin{frame}{Outline}
   		%\tableofcontents[currentsection,currentsubsection]
   		\tableofcontents[currentsection]
 	\end{frame}
 	\note{}
-	\fi
+%	\fi
 }
 \newcommand{\subcheckpoint}[0]{
-	\ifHandout
+%	\ifHandout
 
-	\else
+%	\else
 	\addtocounter{framenumber}{-1}
  	\begin{frame}[t]{Outline}
   		\tableofcontents[currentsection,currentsubsection]
@@ -103,7 +103,7 @@
   		\hfill\hyperlink{frame:thankyouslide}{\color{gray}$[>>]$}%\beamerskipbutton{}}
 	\end{frame}
 	\note{}	
-	\fi
+%	\fi
 }
 %
 \newcommand{\outline}[0]{

@@ -1,18 +1,21 @@
 %+----------------------------------------------------------------------------+
 %| SLIDES: 
-%| Chapter: Brief introduction to multisymplectic geometry and Homotopy momap
+%| Chapter: Introduction  end -> lead to multisymplectic geometry
 %| Author: Antonio miti
-%| Event: PHD preliminary Defence
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
 %+----------------------------------------------------------------------------+
 
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -87,24 +90,24 @@
 
 \end{frame}
 \note[itemize]{
-	\item è centrale nel senso che è l'arena  in cui descrivere molti sistemi ideali
-	\item richiede estensioni e generalizzazioni per codificare casi di studio piu' realistici e/o generali
+	\item Symplectic geometric is central being the arena for describing many ideal systems.
+	\item It can be extended and modified to take into account more realistic or general cases of study.
 
-	\item geometry is an intrisic part of mechanics. 
+	\item geometry is an intrinsic part of mechanics. 
 	The set of configurations has a natural geometric structure, constraints are automatically satisfied by this choice.
-	\item {\bf descibing states as points of a manifold is the principal premise of geometric mechanics.}
-	\item Conf. space and Phase space are manifolds (higher dimensional generalization of surfaces)
+	\item {\bf describing states as points of a manifold is the principal premise of geometric mechanics.}
+	\item Conf. space and Phase space are manifolds (a higher-dimensional generalization of surfaces)
 	\item A large class of constraints can be enforced intrinsically by the topology (shape) of the manifold.
 
 
 	\item an important trait of geometric mechanics is its intuitive nature: structures and time evolution of mechanical systems can be illustrated by visualizing configuration and phase space.
-	Practilly working in Geo. Mech. often means to exploit the inherent geometric intuition.
+	Practically working in Geo. Mech. often means to exploit the inherent geometric intuition.
 	
-	\item an important characteristic is its emphasis on laying a rigourous mathematical foundation on which one can build upon mechanics. 
-	While Newtonian mechanics is highly desciptive it does not reveal the underlying structure.
-	In geo. mech. computations are structural arguments which provide insight into the frabic they represent. 
+	\item an important characteristic is its emphasis on laying a rigorous mathematical foundation on which one can build upon mechanics. 
+	While Newtonian mechanics is highly descriptive it does not reveal the underlying structure.
+	In geo. mech. computations are structural arguments that provide insight into the fabric they represent. 
 
-	\item Huge disclaimer, in the above presentation we glossed out on many details...
+	\item Huge disclaimer: in the above presentation we glossed out on several details...
 
 }
 
@@ -164,6 +167,7 @@
 	%
 \end{frame}
 \note[itemize]{
+	\item a Keyword in my thesis was "multisymplectic", how does this generalization came out?
 	\item Historically, the interest in multisymplectic manifolds, has been motivated by the need for understanding the geometrical foundations of first-order classical field theories.
 	The key point is that, just as one can associate a symplectic manifold to an ordinary classical mechanical system (e.g. a single
 point-like particle constrained to some manifold), it is possible to associate a multisymplectic
@@ -171,8 +175,7 @@ manifold to any classical field system (e.g. a continuous medium like a filament
 	
 	\item General ideas basic parallelisms with caveats
 	\item caveat: points in multiphase spaces are not states
-	\item the table hides the duality between geometric and algebraic approaches to the problem.
-	\item 
+	\item the table hides the duality between geometric and algebraic approaches to the problem. 
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
 

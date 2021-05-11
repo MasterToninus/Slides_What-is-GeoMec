@@ -1,11 +1,21 @@
+%+----------------------------------------------------------------------------+
+%| SLIDES: 
+%| Chapter: Hamiltonian symmetries
+%| Author: Antonio miti
+%| Event: Phd Colloquium - What is ... Geometric mechanics?
+%+----------------------------------------------------------------------------+
+
 %- HandOut Flag -----------------------------------------------------------------------------------------
-\newif\ifHandout
+\makeatletter
+\@ifundefined{ifHandout}{%
+  \expandafter\newif\csname ifHandout\endcsname
+}{}
+\makeatother
 
 %- D0cum3nt ----------------------------------------------------------------------------------------------
 \documentclass[beamer,10pt]{standalone}   
 %\documentclass[beamer,10pt,handout]{standalone}  \Handouttrue  
 
-%- HandOut Flag -----------------------------------------------------------------------------------------
 \ifHandout
 	\setbeameroption{show notes} %print notes   
 \fi
@@ -126,7 +136,9 @@
 	
 \end{frame}
 \note[itemize]{
-	\item in contrast to the intutive notion of symmeties that might come to one's mind (discrete) - like the mirror symmetry of a butterflies or the radial symmetry of flowers- mechanical systems have continuous symmetries.
+\item Up to now we showed how basic mechanics structures can be encoded by geometry.
+\item There is another complementary geometrical property naturally appearing in physics: symmetry.
+	\item in contrast to the intuitive notion of symmetries that might come to one's mind (discrete) - like the mirror symmetry of a butterfly or the radial symmetry of flowers- mechanical systems has continuous symmetries.
 	\item e.g. pendulum has rotation symmetries.
 }
 %-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -141,8 +153,10 @@
 	\begin{columns}
     	\begin{column}{.5\textwidth}
 			\center
-			\includegraphics<1>[width=.75\textwidth]{Pictures/torus2}
-			\includegraphics<2>[width=.75\textwidth]{Pictures/arnoldcat-frame/arnoldclown-0.png}
+			\ifHandout \else
+				\includegraphics<1>[width=.75\textwidth]{Pictures/torus2}
+				\includegraphics<2>[width=.75\textwidth]{Pictures/arnoldcat-frame/arnoldclown-0.png}
+			\fi
 				\only<3->{	
 					\animategraphics[autoplay,palindrome,width=.75\textwidth]{2}{Pictures/arnoldcat-frame/arnoldclown-}{0}{3}
 				}
@@ -180,13 +194,13 @@
 
 \end{frame}
 \note[itemize]{
-	\item considero una varietà simplettica,per esempio il toro (è orientabile e 2d quindi ogni forma volume è una forma simplettica)
-	\item Observe: A trasformation acts (transform) observables (via pullback) and hamiltonian vector field (via push forward)
-	\item loosely speaking a symmetry is a trasformation such that:
-		given an observable $o$ with Ham. vec. field $x$, the ham. vec field $\bar{x}$ of the transformed observable $o'$ coincides with the transformation $x'$ of $x$.
+	\item Let's consider a symplectic manifold, e.g the torus (it is orientable and 2 dimensional, therefore a volume form is also symplectic)
+	\item Observe: A transformation acts (transform) observables (via pullback) and hamiltonian vector field (via push forward)
+	\item loosely speaking a "symmetry" is a transformation such that:
+		given an observable $o$ with Ham. vec. field $x$, the Ham. vec. field $\bar{x}$ of the transformed observable $o'$ coincides with the transformation $x'$ of $x$.
 	\item questo è un po' improrio, di solito si definisco trasformazioni canoniche le trasformazioni che preservano la struttura simplettica e simmetrie le trasformazioni canoniche che preservano anche la fissata hamiltoniana.
 	\item formally symmetries are described by Lie group actions on configuration spaces or phase spaces.
-	\item their importance lies in the associated conserved quantites and the reduced description that arise from them.
+	\item their importance lies in the associated conserved quantities and the reduced description that arise from them.
 
 		
 }
